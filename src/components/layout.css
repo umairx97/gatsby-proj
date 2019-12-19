@@ -1,3 +1,7 @@
+* {
+  transition: all 0.5 ease;
+}
+
 .flexer {
   display: flex;
   align-items: center;
@@ -14,11 +18,17 @@
 
 .post-item { 
   background-color: white;
+  cursor: pointer;
   color: #444444;
   padding: 10px;
+  transition: transform 1s;
   margin-top: 10px;
   border: solid 1px dodgerblue;
   box-shadow: 5px 5px 5px lightgray;
+}
+
+.post-item:hover { 
+  transform: scale(1.05);
 }
 
 .test-border { 
