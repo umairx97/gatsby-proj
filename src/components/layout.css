@@ -1,5 +1,6 @@
 * {
   transition: all 0.5 ease;
+  box-sizing: border-box;
 }
 
 .flexer {
@@ -33,4 +34,9 @@
 
 .test-border { 
   border: solid 1px red;
+}
+
+.article-container { 
+  height: 100%;
+  padding: 10px;
 }

@@ -23,11 +23,13 @@ query ($slug: String!){
 
 const Blog = (props) => {
     return (
-        <div>
-            <h1>{props.data.markdownRemark.frontmatter.title}</h1>
-            <h4>{props.data.markdownRemark.frontmatter.date}</h4>
+        <div className="article-container test-border">
             <div>
-                <p dangerouslySetInnerHTML={{ __html: props.data.markdownRemark.html }}></p>
+                <h1 style={{ margin: 0 }} >{props.data.markdownRemark.frontmatter.title}</h1>
+                <h4 style={{ margin: 0 }}>{props.data.markdownRemark.frontmatter.date}</h4>
+                <div >
+                    <p dangerouslySetInnerHTML={{ __html: props.data.markdownRemark.html }}></p>
+                </div>
             </div>
         </div>
     )
