@@ -25,24 +25,19 @@ const Markdown = () => {
 
   return (
     <Fragment>
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: "lightgray",
-        padding: "10px",
-      }}>
-        {data.allMarkdownRemark.edges.map(item => (
-          <div>
-            <Link to={item.node.fields.slug}>
-              <h2 style={{ textDecoration: 'underline', color: 'black', }}>
-                Title: {item.node.frontmatter.title}
-              </h2>
-            </Link>
-            <h4>Date: {item.node.frontmatter.date}</h4>
-          </div>
-
-        ))}
+      <div className="post-container" >
+        <div>
+          {data.allMarkdownRemark.edges.map(item => (
+            <div className="post-item">
+              <Link to={item.node.fields.slug} >
+                <h2 style={{ textDecoration: 'underline', color: '#444444', margin: 0, padding: 0 }}>
+                  Title: {item.node.frontmatter.title}
+                </h2>
+              </Link>
+              <h4 >Date: {item.node.frontmatter.date}</h4>
+            </div>
+          ))}
+        </div>
       </div>
 
     </Fragment>
