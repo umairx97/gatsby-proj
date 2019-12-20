@@ -15,6 +15,8 @@ Gatsby is a free and open source framework based on React that helps developers 
 
 Wait Up, What is Gatsby?
 
+![Post Background](../images/gatsby-astronaut.png)
+
 “Gatsby is a free and open source framework based on React that helps developers build blazing fast websites and apps.” — Gatsbyjs.org (their emphasis — I’ll explain later).
 
 I like to describe it as Create React App on steroids, where it’s an easy way to bootstrap a React application and focus on getting productive with the truly different parts of your application. At its core, it’s a glorified webpack app, where everything gets built upon that same webpack pipeline that you’ve struggled to write and fully understand to this day (or maybe that’s just me).

@@ -7,48 +7,28 @@
 // You can delete this file if you're not using it
 const path = require('path');
 
-
-module.exports.onCreateNode = ({ node, actions }) => {
-    const { createNodeField } = actions
-
-    if (node.internal.type === "MarkdownRemark") {
-        const slug = path.basename(node.fileAbsolutePath, ".md");
-
-        console.log("SLUG IS WORKING ", slug)
-        createNodeField({
-            node,
-            name: "slug",
-            value: slug
-        })
-    }
-
-}
-
-
 module.exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
     const blogTemplate = path.resolve("./src/templates/blog.js");
 
     const response = await graphql(`
         {
-            allMarkdownRemark {
-                edges{
-                    node {
-                        fields {
-                            slug
-                        }
-                    }
+            allContentfulBlogPost {
+            edges {
+                node {
+                slug
                 }
+            }
             }
         }
     `)
 
-    response.data.allMarkdownRemark.edges.forEach(edge => {
+    response.data.allContentfulBlogPost.edges.forEach(edge => {
         createPage({
-            path: `/${edge.node.fields.slug}`,
+            path: `/${edge.node.slug}`,
             component: blogTemplate,
             context: {
-                slug: edge.node.fields.slug
+                slug: edge.node.slug
             }
         })
     })

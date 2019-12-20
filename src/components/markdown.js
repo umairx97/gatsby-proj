@@ -6,35 +6,37 @@ const Markdown = () => {
 
   const data = useStaticQuery(graphql`
     {
-        allMarkdownRemark {
-          edges {
-            node {
-              frontmatter{
-                title
-                date
-              }
-              html
-              fields {
-                slug
-              }
-            }
+      allContentfulBlogPost(sort:{
+        fields: publishedDate,
+        order: DESC
+      }) {
+        edges {
+          node {
+            id
+            slug
+            title
+            publishedDate(fromNow: true, formatString:"DD MM YYYY")
+          
           }
         }
       }
+    }
+    
     `)
 
   return (
     <Fragment>
       <div className="post-container" >
         <div>
-          {data.allMarkdownRemark.edges.map(item => (
+        {console.log(data)}
+          {data.allContentfulBlogPost.edges.map(item => (
             <div className="post-item">
-              <Link to={item.node.fields.slug} >
+              <Link to={item.node.slug} >
                 <h2 style={{ textDecoration: 'underline', color: '#444444', margin: 0, padding: 0 }}>
-                  Title: {item.node.frontmatter.title}
+                  Title: {item.node.title}
                 </h2>
               </Link>
-              <h4 >Date: {item.node.frontmatter.date}</h4>
+              <h4 >Date: {item.node.publishedDate}</h4>
             </div>
           ))}
         </div>
